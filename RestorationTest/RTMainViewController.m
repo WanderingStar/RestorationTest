@@ -113,8 +113,12 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
-    [[segue destinationViewController] setRow:indexPath.row];
+    if ([segue.identifier isEqualToString:@"Button"]) {
+        [[segue destinationViewController] setRow:self.rows];
+    } else {
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+        [[segue destinationViewController] setRow:indexPath.row];
+    }
 }
 
 -(void)encodeRestorableStateWithCoder:(NSCoder *)coder

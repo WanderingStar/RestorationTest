@@ -46,6 +46,8 @@
 -(BOOL)application:(UIApplication *)application shouldSaveApplicationState:(NSCoder *)coder
 {
     NSLog(@"AppDelegate shouldSaveApplicationState");
+    UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
+    NSLog(@"Navigation View Controllers: %@", [navigationController.viewControllers componentsJoinedByString:@", "]);
     return YES;
 }
 
@@ -55,11 +57,27 @@
     return YES;
 }
 
-/* Uncomment to see these calls
+/* Uncomment to see these calls */
 -(UIViewController *)application:(UIApplication *)application viewControllerWithRestorationIdentifierPath:(NSArray *)identifierComponents coder:(NSCoder *)coder
 {
     NSLog(@"AppDelegate viewControllerWithRestorationIdentifierPath:%@", [identifierComponents componentsJoinedByString:@"/"]);
+    
+    if ([@"Navigation" isEqualToString:identifierComponents[0]]) {
+        UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
+        if (identifierComponents.count == 1) {
+            return navigationController;
+        }
+  
+        NSLog(@"Navigation View Controllers: %@", [navigationController.viewControllers componentsJoinedByString:@", "]);
+        
+        for (UIViewController *viewController in navigationController.viewControllers) {
+            if ([viewController.restorationIdentifier isEqualToString:[identifierComponents lastObject]]) {
+                NSLog(@"Found %@", viewController.restorationIdentifier);
+                return viewController;
+            }
+        }
+    }
     return NULL;
-} */
+}
 
 @end

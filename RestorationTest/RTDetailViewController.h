@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RTDetailViewController : UIViewController
+@interface RTDetailViewController : UIViewController<UIViewControllerRestoration>
 
 @property (nonatomic) NSInteger row;
 
