@@ -57,7 +57,13 @@
                             <outlet property="delegate" destination="zMd-cN-jWG" id="O06-FR-FO8"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Main View" id="5Q7-2N-Zoz"/>
+                    <navigationItem key="navigationItem" title="Main View" id="5Q7-2N-Zoz">
+                        <barButtonItem key="rightBarButtonItem" title="+" id="sTw-Mp-jkK">
+                            <connections>
+                                <action selector="addRow:" destination="zMd-cN-jWG" id="Ot5-y7-dZk"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VIf-Wo-kzC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -75,7 +81,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QBE-zy-O51">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QBE-zy-O51">
                                 <rect key="frame" x="139" y="273" width="42" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>

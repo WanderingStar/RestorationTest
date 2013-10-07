@@ -52,7 +52,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 3;
+    return self.rows;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -120,11 +120,13 @@
 -(void)encodeRestorableStateWithCoder:(NSCoder *)coder
 {
     NSLog(@"MainView encodeRestorableStateWithCoder");
+    [coder encodeInteger:self.rows forKey:@"rows"];
 }
 
 -(void)decodeRestorableStateWithCoder:(NSCoder *)coder
 {
-    NSLog(@"MainView decodeRestorableStateWithCoder");    
+    NSLog(@"MainView decodeRestorableStateWithCoder");
+    self.rows = [coder decodeIntegerForKey:@"rows"];
 }
 
 -(NSString *)modelIdentifierForElementAtIndexPath:(NSIndexPath *)idx inView:(UIView *)view
@@ -138,6 +140,12 @@
     NSLog(@"MainView indexPathForElementWithModelIdentifier %@", identifier);
     NSArray *parts = [identifier componentsSeparatedByString:@":"];
     return [NSIndexPath indexPathForRow:[parts[1] intValue] inSection:[parts[0] intValue]];
+}
+
+-(void)addRow:(id)sender
+{
+    self.rows++;
+    [self.tableView reloadData];
 }
 
 @end

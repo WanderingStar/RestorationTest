@@ -10,4 +10,8 @@
 
 @interface RTMainViewController : UITableViewController<UIDataSourceModelAssociation>
 
+@property (nonatomic) NSInteger rows;
+
+-(IBAction)addRow:(id)sender;
+
 @end
