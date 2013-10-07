@@ -55,10 +55,11 @@
     return YES;
 }
 
+/* Uncomment to see these calls
 -(UIViewController *)application:(UIApplication *)application viewControllerWithRestorationIdentifierPath:(NSArray *)identifierComponents coder:(NSCoder *)coder
 {
     NSLog(@"AppDelegate viewControllerWithRestorationIdentifierPath:%@", [identifierComponents componentsJoinedByString:@"/"]);
     return NULL;
-}
+} */
 
 @end
