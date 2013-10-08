@@ -113,30 +113,28 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    if ([segue.identifier isEqualToString:@"Button"]) {
-        [[segue destinationViewController] setRow:self.rows];
-    } else {
-        NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
-        [[segue destinationViewController] setRow:indexPath.row];
-    }
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+    [[segue destinationViewController] setRow:indexPath.row];
 }
 
 -(void)encodeRestorableStateWithCoder:(NSCoder *)coder
 {
     NSLog(@"MainView encodeRestorableStateWithCoder");
     [coder encodeInteger:self.rows forKey:@"rows"];
+    [super encodeRestorableStateWithCoder:coder];
 }
 
 -(void)decodeRestorableStateWithCoder:(NSCoder *)coder
 {
     NSLog(@"MainView decodeRestorableStateWithCoder");
+    [super decodeRestorableStateWithCoder:coder];
     self.rows = [coder decodeIntegerForKey:@"rows"];
 }
 
 -(NSString *)modelIdentifierForElementAtIndexPath:(NSIndexPath *)idx inView:(UIView *)view
 {
     NSLog(@"MainView modelIdentifierForElementAtIndexPath %@", idx);
-    return [NSString stringWithFormat:@"%d:%d", idx.section, idx.row];
+    return [NSString stringWithFormat:@"%ld:%ld", (long) idx.section, (long) idx.row];
 }
 
 -(NSIndexPath *)indexPathForElementWithModelIdentifier:(NSString *)identifier inView:(UIView *)view
